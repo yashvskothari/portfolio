@@ -8,7 +8,7 @@ The portfolio is designed with a clean UI, smooth animations, and responsive lay
 
 ## Live Demo
 
-https://yashvardhan-kothari-portfolio.netlify.app/
+https://portfolio-yashvardhan-kothari.vercel.app/
 
 ---
 
