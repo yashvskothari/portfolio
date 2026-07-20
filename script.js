@@ -1025,36 +1025,6 @@ card.style.boxShadow="";
 });
 
 
-
-// ===========================================
-// KEYBOARD SHORTCUT
-// Press H to return Home
-// ===========================================
-
-document.addEventListener("keydown",(e)=>{
-
-if(
-
-e.key==="h" ||
-
-e.key==="H"
-
-){
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-}
-
-});
-
-
-
 // ===========================================
 // CURRENT YEAR (OPTIONAL)
 // ===========================================
