@@ -1065,7 +1065,7 @@ if(footer){
 
 footer.innerHTML=
 
-`© ${new Date().getFullYear()} Yash Kothari. Designed & Developed with ❤️`;
+`© ${new Date().getFullYear()} Yashvardhan Singh Kothari. <br> Designed, developed, and continuously improved.`;
 
 }
 

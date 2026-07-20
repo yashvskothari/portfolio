@@ -954,6 +954,33 @@ section{
     );
 
 }
+.fill.express{
+
+    background:linear-gradient(
+        90deg,
+        #5c0000,
+        #fcf8f8
+    );
+
+}
+.fill.cpp{
+
+    background:linear-gradient(
+        90deg,
+        #6aae77,
+        #010101
+    );
+
+}
+.fill.vc{
+
+    background:linear-gradient(
+        90deg,
+        #eb03fc,
+        #f6f0f0
+    );
+
+}
 
 /* ===========================================
    SKILL PERCENTAGES
@@ -995,6 +1022,21 @@ section{
 .fill.sql{
 
     width:55%;
+
+}
+.fill.cpp{
+
+    width:70%;
+
+}
+.fill.express{
+
+    width:42%;
+
+}
+.fill.vc{
+
+    width:74%;
 
 }
 
