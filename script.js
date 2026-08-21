@@ -25,7 +25,7 @@ function applyTheme(theme, save = true) {
     const validThemes = ["blue", "yellow", "red", "white"];
 
     if (!validThemes.includes(theme)) {
-        theme = "blue";
+        theme = "red";
     }
 
     document.documentElement.setAttribute("data-theme", theme);
@@ -59,7 +59,7 @@ function applyTheme(theme, save = true) {
     }
 }
 
-const savedTheme = localStorage.getItem("portfolio-theme") || "blue";
+const savedTheme = localStorage.getItem("portfolio-theme") || "red";
 applyTheme(savedTheme, false);
 
 themeToggle.addEventListener("click", (e) => {
