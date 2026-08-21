@@ -3,6 +3,107 @@
 // PART 1
 // ===========================================
 
+
+// ===========================================
+// THEME SWITCHER
+// ===========================================
+
+const themeSwitcher = document.querySelector(".theme-switcher");
+const themeToggle = document.getElementById("themeToggle");
+const themeOptions = document.querySelectorAll(".theme-option");
+const themeColorMeta = document.getElementById("themeColorMeta");
+
+const themeMetaColors = {
+    blue: "#070B17",
+    yellow: "#100C02",
+    red: "#130406",
+    lavender: "#F1EEFF"
+};
+
+function applyTheme(theme, save = true) {
+
+    const validThemes = ["blue", "yellow", "red", "lavender"];
+
+    if (!validThemes.includes(theme)) {
+        theme = "red";
+    }
+
+    document.documentElement.setAttribute("data-theme", theme);
+
+    if (themeColorMeta) {
+        themeColorMeta.setAttribute("content", themeMetaColors[theme]);
+    }
+
+    themeOptions.forEach(option => {
+        const isActive = option.dataset.theme === theme;
+        option.classList.toggle("active", isActive);
+
+        if (isActive) {
+            option.setAttribute("aria-current", "true");
+        } else {
+            option.removeAttribute("aria-current");
+        }
+    });
+
+    const activeOption = document.querySelector(`.theme-option[data-theme="${theme}"]`);
+
+    if (activeOption) {
+        themeToggle.setAttribute(
+            "aria-label",
+            `Choose color theme. Current theme: ${activeOption.textContent.trim()}`
+        );
+    }
+
+    if (save) {
+        localStorage.setItem("portfolio-theme", theme);
+    }
+}
+
+const savedTheme = localStorage.getItem("portfolio-theme") || "red";
+applyTheme(savedTheme, false);
+
+themeToggle.addEventListener("click", (e) => {
+
+    e.stopPropagation();
+
+    const isOpen = themeSwitcher.classList.toggle("open");
+    themeToggle.setAttribute("aria-expanded", String(isOpen));
+
+});
+
+themeOptions.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        applyTheme(option.dataset.theme);
+
+        themeSwitcher.classList.remove("open");
+        themeToggle.setAttribute("aria-expanded", "false");
+
+    });
+
+});
+
+document.addEventListener("click", (e) => {
+
+    if (!themeSwitcher.contains(e.target)) {
+        themeSwitcher.classList.remove("open");
+        themeToggle.setAttribute("aria-expanded", "false");
+    }
+
+});
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+        themeSwitcher.classList.remove("open");
+        themeToggle.setAttribute("aria-expanded", "false");
+        themeToggle.focus();
+    }
+
+});
+
+
 // ===========================================
 // EMAILJS INITIALIZATION
 // ===========================================
@@ -105,7 +206,7 @@ particlesJS("particles-js", {
 
         color: {
 
-            value: "#edf1f8"
+            value: getComputedStyle(document.documentElement).getPropertyValue("--particle-dot").trim() || "#edf1f8"
 
         },
 
@@ -135,7 +236,7 @@ particlesJS("particles-js", {
 
             distance: 150,
 
-            color: "#073bf7",
+            color: getComputedStyle(document.documentElement).getPropertyValue("--particle-line").trim() || "#073bf7",
 
             opacity: 0.2,
 
@@ -233,7 +334,7 @@ document.addEventListener("mousemove", (e) => {
 
 const hoverElements = document.querySelectorAll(
 
-    "a, button, .project-card, .skill-card, .image-card"
+    "a, button, .project-card, .skill-card, .image-card, .theme-option, .theme-toggle"
 
 );
 

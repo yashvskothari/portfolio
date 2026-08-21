@@ -7,7 +7,7 @@
       name="description"
       content="Portfolio of Yashvardhan Singh Kothari — software development enthusiast working across full-stack web development, AI, and Power BI/SQL data analytics."
     />
-    <meta name="theme-color" content="#070B17" />
+    <meta name="theme-color" content="#070B17" id="themeColorMeta" />
     <meta name="author" content="Yashvardhan Singh Kothari" />
 
     <!-- Open Graph / Social Preview -->
@@ -103,6 +103,44 @@
 
           <li><a href="#contact">Contact</a></li>
         </ul>
+
+        <div class="theme-switcher">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="Choose color theme"
+          >
+            <i class="fa-solid fa-palette"></i>
+            <span>Theme</span>
+            <i class="fa-solid fa-chevron-down theme-chevron"></i>
+          </button>
+
+          <div class="theme-menu" id="themeMenu" role="menu" aria-label="Theme options">
+            <button type="button" class="theme-option" data-theme="blue" role="menuitem">
+              <span class="theme-swatch blue-swatch"></span>
+              Blue
+              <i class="fa-solid fa-check theme-check"></i>
+            </button>
+            <button type="button" class="theme-option" data-theme="yellow" role="menuitem">
+              <span class="theme-swatch yellow-swatch"></span>
+              Yellow
+              <i class="fa-solid fa-check theme-check"></i>
+            </button>
+            <button type="button" class="theme-option" data-theme="red" role="menuitem">
+              <span class="theme-swatch red-swatch"></span>
+              Red
+              <i class="fa-solid fa-check theme-check"></i>
+            </button>
+            <button type="button" class="theme-option" data-theme="lavender" role="menuitem">
+              <span class="theme-swatch lavender-swatch"></span>
+              Lavender
+              <i class="fa-solid fa-check theme-check"></i>
+            </button>
+          </div>
+        </div>
 
         <div class="menu-btn" role="button" tabindex="0" aria-label="Toggle navigation menu">
           <i class="fa-solid fa-bars"></i>
