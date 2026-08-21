@@ -3,6 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio of Yashvardhan Singh Kothari — software development enthusiast working across full-stack web development, AI, and Power BI/SQL data analytics."
+    />
+    <meta name="theme-color" content="#070B17" />
+    <meta name="author" content="Yashvardhan Singh Kothari" />
+
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Yashvardhan Singh Kothari | Portfolio" />
+    <meta
+      property="og:description"
+      content="Software development enthusiast building practical projects across full-stack web, AI, and data analytics."
+    />
+    <meta
+      property="og:image"
+      content="https://cdn.jsdelivr.net/gh/yashvskothari/portfolio-assets/images/profile.png"
+    />
+
     <title>Yashvardhan Singh Kothari | Portfolio</title>
     <link
       rel="icon"
@@ -68,7 +87,7 @@
     <header>
       <nav>
         <div class="logo">
-          <span>YK.</span>
+          <a href="#home" aria-label="Go to home section" style="text-decoration:none;"><span>YK.</span></a>
         </div>
 
         <ul class="nav-links">
@@ -85,7 +104,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
 
-        <div class="menu-btn">
+        <div class="menu-btn" role="button" tabindex="0" aria-label="Toggle navigation menu">
           <i class="fa-solid fa-bars"></i>
         </div>
       </nav>
@@ -125,15 +144,23 @@
         </div>
 
         <div class="social-icons">
-          <a href="https://github.com/yashvskothari"
+          <a
+            href="https://github.com/yashvskothari"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile"
             ><i class="fab fa-github"></i
           ></a>
 
-          <a href="https://linkedin.com/in/yashvardhansinghkothari"
+          <a
+            href="https://linkedin.com/in/yashvardhansinghkothari"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
             ><i class="fab fa-linkedin"></i
           ></a>
 
-          <a href="mailto:yashkotjpr@gmail.com"
+          <a href="mailto:yashkotjpr@gmail.com" aria-label="Send an email"
             ><i class="fas fa-envelope"></i
           ></a>
         </div>
@@ -290,6 +317,8 @@
         <div class="project-card">
           <img
             src="https://cdn.jsdelivr.net/gh/yashvskothari/portfolio-assets/images/python_chatbot.png"
+            alt="Python based AI chatbot screenshot"
+            loading="lazy"
           />
 
           <div class="project-content">
@@ -298,9 +327,9 @@
             <p>Interactive AI chatbot built using Groq API key.</p>
 
             <div class="buttons">
-              <a href="https://fluxai-chat.vercel.app/">Live</a>
+              <a href="https://fluxai-chat.vercel.app/" target="_blank" rel="noopener noreferrer">Live</a>
 
-              <a href="https://github.com/yashvskothari/Python-ChatBot.git"
+              <a href="https://github.com/yashvskothari/Python-ChatBot.git" target="_blank" rel="noopener noreferrer"
                 >GitHub</a
               >
             </div>
@@ -309,6 +338,8 @@
         <div class="project-card">
           <img
             src="https://cdn.jsdelivr.net/gh/yashvskothari/portfolio-assets/images/spotify.png"
+            alt="Spotify analytics dashboard screenshot"
+            loading="lazy"
           />
 
           <div class="project-content">
@@ -317,9 +348,7 @@
             <p>Interactive Power BI dashboard for Spotify analytics.</p>
 
             <div class="buttons">
-              <!-- <a href="#">Live</a> -->
-
-              <a href="https://github.com/yashvskothari/Spotify_Dashboard.git"
+              <a href="https://github.com/yashvskothari/Spotify_Dashboard.git" target="_blank" rel="noopener noreferrer"
                 >GitHub</a
               >
             </div>
@@ -329,6 +358,8 @@
         <div class="project-card">
           <img
             src="https://cdn.jsdelivr.net/gh/yashvskothari/portfolio-assets/images/blinkit.png"
+            alt="Blinkit business intelligence dashboard screenshot"
+            loading="lazy"
           />
 
           <div class="project-content">
@@ -337,10 +368,10 @@
             <p>Business Intelligence dashboard using Power BI.</p>
 
             <div class="buttons">
-              <!-- <a href="#">Live</a> -->
-
               <a
                 href="https://github.com/yashvskothari/Blinkit_Dashboard_PowerBI.git"
+                target="_blank"
+                rel="noopener noreferrer"
                 >GitHub</a
               >
             </div>
@@ -350,6 +381,8 @@
         <div class="project-card">
           <img
             src="https://cdn.jsdelivr.net/gh/yashvskothari/portfolio-assets/images/Eternal-bharat.png"
+            alt="Eternal Bharat educational website screenshot"
+            loading="lazy"
           />
 
           <div class="project-content">
@@ -361,11 +394,9 @@
             </p>
 
             <div class="buttons">
-              <!-- <a href="#">Live</a> -->
+              <a href="https://Eternal-Bharat.vercel.app/" target="_blank" rel="noopener noreferrer">Live</a>
 
-              <a href="https://Eternal-Bharat.vercel.app/">Live</a>
-
-              <a href="https://github.com/yashvskothari/Eternal-Bharat.git"
+              <a href="https://github.com/yashvskothari/Eternal-Bharat.git" target="_blank" rel="noopener noreferrer"
                 >GitHub</a
               >
             </div>
@@ -375,6 +406,8 @@
         <div class="project-card">
           <img
             src="https://cdn.jsdelivr.net/gh/yashvskothari/portfolio-assets/images/country_comparision.png"
+            alt="Country comparison dashboard screenshot"
+            loading="lazy"
           />
 
           <div class="project-content">
@@ -383,10 +416,10 @@
             <p>Compare six countries using interactive visuals.</p>
 
             <div class="buttons">
-              <!-- <a href="#">Live</a> -->
-
               <a
                 href="https://github.com/yashvskothari/country_comparision_Dashboard.git"
+                target="_blank"
+                rel="noopener noreferrer"
                 >GitHub</a
               >
             </div>
@@ -396,6 +429,8 @@
         <div class="project-card">
           <img
             src="https://cdn.jsdelivr.net/gh/yashvskothari/portfolio-assets/images/loan_analysis.png"
+            alt="Loan analysis dashboard screenshot"
+            loading="lazy"
           />
 
           <div class="project-content">
@@ -404,10 +439,10 @@
             <p>SQL + Power BI analytics dashboard.</p>
 
             <div class="buttons">
-              <!-- <a href="#">Live</a> -->
-
               <a
                 href="https://github.com/yashvskothari/Loan_Analysis_Dashboard.git"
+                target="_blank"
+                rel="noopener noreferrer"
                 >GitHub</a
               >
             </div>
@@ -417,6 +452,8 @@
         <div class="project-card">
           <img
             src="https://cdn.jsdelivr.net/gh/yashvskothari/portfolio-assets/images/portfolio.png"
+            alt="Personal portfolio website screenshot"
+            loading="lazy"
           />
 
           <div class="project-content">
@@ -428,11 +465,11 @@
             </p>
 
             <div class="buttons">
-              <a href="https://portfolio-yashvardhan-kothari.vercel.app/"
+              <a href="https://portfolio-yashvardhan-kothari.vercel.app/" target="_blank" rel="noopener noreferrer"
                 >Live</a
               >
 
-              <a href="https://github.com/yashvskothari/portfolio.git"
+              <a href="https://github.com/yashvskothari/portfolio.git" target="_blank" rel="noopener noreferrer"
                 >GitHub</a
               >
             </div>
@@ -489,13 +526,18 @@
         <h2>Contact</h2>
       </div>
       <form id="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required />
+        <label class="visually-hidden" for="contact-name">Your Name</label>
+        <input id="contact-name" type="text" name="name" placeholder="Your Name" autocomplete="name" required />
 
-        <input type="email" name="email" placeholder="Your Email" required />
+        <label class="visually-hidden" for="contact-email">Your Email</label>
+        <input id="contact-email" type="email" name="email" placeholder="Your Email" autocomplete="email" required />
 
-        <input type="text" name="subject" placeholder="Subject" required />
+        <label class="visually-hidden" for="contact-subject">Subject</label>
+        <input id="contact-subject" type="text" name="subject" placeholder="Subject" required />
 
+        <label class="visually-hidden" for="contact-message">Your Message</label>
         <textarea
+          id="contact-message"
           name="message"
           placeholder="Your Message"
           rows="6"
@@ -519,17 +561,13 @@
 
     <!-- Back To Top -->
 
-    <button id="topBtn">
+    <button id="topBtn" aria-label="Back to top">
       <i class="fa-solid fa-arrow-up"></i>
     </button>
 
     <!-- Scripts -->
 
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
-<!-- update this resume , dont give me the new pdf , but i wanna add problem statements to every project in this resume and outcome as what i learned in this project. also give me some content for SIH certifications. -->

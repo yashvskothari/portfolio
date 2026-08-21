@@ -432,6 +432,18 @@ nav{
 
 }
 
+.nav-links a.active{
+
+    color:var(--primary);
+
+}
+
+.nav-links a.active::after{
+
+    width:100%;
+
+}
+
 .menu-btn{
 
     display:none;
@@ -547,11 +559,7 @@ nav{
 
     cursor: pointer;
 
-    transition: box-shadow .3s ease, background .3s ease;
-
-    animation: none !important;
-
-    transform: none !important;
+    transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
 }
 
 .primary{
@@ -1763,8 +1771,6 @@ footer{
 
     animation:
 
-        floatImage 5s ease-in-out infinite,
-
         glow 4s infinite;
 
 }
@@ -2714,6 +2720,28 @@ body{
 .w-100{
 
     width:100%;
+
+}
+
+.visually-hidden{
+
+    position:absolute;
+
+    width:1px;
+
+    height:1px;
+
+    padding:0;
+
+    margin:-1px;
+
+    overflow:hidden;
+
+    clip:rect(0,0,0,0);
+
+    white-space:nowrap;
+
+    border:0;
 
 }
 

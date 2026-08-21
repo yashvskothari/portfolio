@@ -264,7 +264,7 @@ hoverElements.forEach(item => {
 
 const progressBar = document.getElementById("progressBar");
 
-window.addEventListener("scroll", () => {
+function updateProgressBar() {
 
     const scrollTop =
 
@@ -278,11 +278,11 @@ window.addEventListener("scroll", () => {
 
     const progress =
 
-        (scrollTop / scrollHeight) * 100;
+        scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
 
     progressBar.style.width = progress + "%";
 
-});
+}
 
 
 // ===========================================
@@ -291,7 +291,7 @@ window.addEventListener("scroll", () => {
 
 const header = document.querySelector("header");
 
-window.addEventListener("scroll", () => {
+function updateStickyHeader() {
 
     if (window.scrollY > 40) {
 
@@ -305,7 +305,7 @@ window.addEventListener("scroll", () => {
 
     }
 
-});
+}
 
 
 // ===========================================
@@ -314,30 +314,28 @@ window.addEventListener("scroll", () => {
 
 const heroImage = document.querySelector(".image-card");
 
+let heroTiltX = 0;
+let heroTiltY = 0;
+
 window.addEventListener("mousemove", (e) => {
 
     if (!heroImage) return;
 
-    const x = (window.innerWidth / 2 - e.clientX) / 40;
+    heroTiltX = (window.innerWidth / 2 - e.clientX) / 40;
 
-    const y = (window.innerHeight / 2 - e.clientY) / 40;
-
-    heroImage.style.transform =
-
-        `rotateY(${-x}deg) rotateX(${y}deg)`;
+    heroTiltY = (window.innerHeight / 2 - e.clientY) / 40;
 
 });
 
 
-// Reset Image Rotation
+// Reset Image Rotation (window never fires "mouseleave" reliably,
+// so we watch the document root instead)
 
-window.addEventListener("mouseleave", () => {
+document.documentElement.addEventListener("mouseleave", () => {
 
-    if (!heroImage) return;
+    heroTiltX = 0;
 
-    heroImage.style.transform =
-
-        "rotateY(0deg) rotateX(0deg)";
+    heroTiltY = 0;
 
 });
 
@@ -392,6 +390,19 @@ menuBtn.addEventListener("click", () => {
     else {
 
         menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+
+    }
+
+});
+
+// Keyboard support (menuBtn is a div with role="button")
+menuBtn.addEventListener("keydown", (e) => {
+
+    if (e.key === "Enter" || e.key === " ") {
+
+        e.preventDefault();
+
+        menuBtn.click();
 
     }
 
@@ -457,7 +468,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 const topBtn = document.getElementById("topBtn");
 
-window.addEventListener("scroll", () => {
+function updateBackToTop() {
 
     if (window.scrollY > 400) {
 
@@ -471,7 +482,7 @@ window.addEventListener("scroll", () => {
 
     }
 
-});
+}
 
 topBtn.addEventListener("click", () => {
 
@@ -524,9 +535,6 @@ function animateSkills() {
 
 }
 
-window.addEventListener("scroll", animateSkills);
-animateSkills();
-
 
 // ===========================================
 // ACTIVE NAVIGATION (SCROLL SPY)
@@ -536,7 +544,7 @@ const sections = document.querySelectorAll("section");
 
 const navItems = document.querySelectorAll(".nav-links a");
 
-window.addEventListener("scroll", () => {
+function updateActiveNav() {
 
     let current = "";
 
@@ -576,7 +584,44 @@ window.addEventListener("scroll", () => {
 
     });
 
+}
+
+
+// ===========================================
+// SHARED SCROLL HANDLER (rAF-throttled)
+// Runs every scroll-driven update in one pass
+// instead of six separate listeners fighting
+// over the same scroll event.
+// ===========================================
+
+let scrollTicking = false;
+
+function handleScroll() {
+
+    updateProgressBar();
+    updateStickyHeader();
+    updateBackToTop();
+    animateSkills();
+    updateActiveNav();
+
+    scrollTicking = false;
+
+}
+
+window.addEventListener("scroll", () => {
+
+    if (!scrollTicking) {
+
+        requestAnimationFrame(handleScroll);
+
+        scrollTicking = true;
+
+    }
+
 });
+
+// Run once immediately so the UI is correct before any scrolling happens
+handleScroll();
 
 
 
@@ -611,32 +656,6 @@ window.addEventListener("resize", () => {
         menuBtn.innerHTML =
 
             '<i class="fa-solid fa-bars"></i>';
-
-    }
-
-});
-
-
-
-// ===========================================
-// FADE HEADER WHEN AT TOP
-// ===========================================
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY < 50) {
-
-        header.style.background =
-
-            "rgba(8,10,20,.45)";
-
-    }
-
-    else {
-
-        header.style.background =
-
-            "rgba(7,11,23,.92)";
 
     }
 
@@ -869,7 +888,9 @@ document.head.appendChild(rippleStyle);
 
 
 // ===========================================
-// FLOATING HERO IMAGE
+// FLOATING + TILTING HERO IMAGE
+// (single transform-only rAF loop: no layout reflow,
+// and no more fighting with the parallax listener above)
 // ===========================================
 
 let floatTime = 0;
@@ -880,9 +901,10 @@ function floatHero(){
 
     floatTime += 0.02;
 
-    const y = Math.sin(floatTime) * 8;
+    const floatY = Math.sin(floatTime) * 10;
 
-    heroImage.style.marginTop = y + "px";
+    heroImage.style.transform =
+        `translateY(${floatY}px) perspective(1000px) rotateY(${-heroTiltX}deg) rotateX(${heroTiltY}deg)`;
 
     requestAnimationFrame(floatHero);
 
@@ -913,48 +935,6 @@ document.querySelectorAll(".project-card img")
     });
 
 });
-
-
-
-// ===========================================
-// RANDOM GLOW COLOR
-// ===========================================
-
-const glowColors=[
-
-"#4F8CFF",
-
-"#00E5FF",
-
-"#7C3AED",
-
-"#7ED957"
-
-];
-
-setInterval(()=>{
-
-    const random=
-
-    glowColors[
-
-        Math.floor(
-
-            Math.random()*glowColors.length
-
-        )
-
-    ];
-
-    document.documentElement.style.setProperty(
-
-        "--primary",
-
-        random
-
-    );
-
-},10000);
 
 
 
